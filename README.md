@@ -12,14 +12,14 @@ for this scripts to work you have to have the following config + files:
 ###Postfix
 
 <code>
-# virtual domains
+`# virtual domains`
 virtual_mailbox_domains = /etc/postfix/vdomains
 virtual_transport = dovecot
-#vmailbox liste
+`#vmailbox liste`
 virtual_mailbox_maps = hash:/etc/postfix/vmaps
-#vmail alias db
+`#vmail alias db`
 virtual_alias_maps = hash:/etc/postfix/valias
-#basis Pfad fuer Virtuelle Mailboxen
+`#basis Pfad fuer Virtuelle Mailboxen`
 virtual_mailbox_base = /var/mail/
 </code>
 
