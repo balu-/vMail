@@ -1,7 +1,7 @@
 vMail
 =====
 
-Some simple scripts to manage my virtual Users &amp; Domains in my postfix/dovecot setup
+Some simple scripts to manage my virtual Users &amp; Domains in my postfix/dovecot setup.
 
 
 Config
@@ -14,11 +14,11 @@ for this scripts to work you have to have the following config + files:
     # virtual domains
       virtual_mailbox_domains = /etc/postfix/vdomains
       virtual_transport = dovecot
-   `#vmailbox liste`
+    #vmailbox liste
       virtual_mailbox_maps = hash:/etc/postfix/vmaps
     #vmail alias db
       virtual_alias_maps = hash:/etc/postfix/valias
-   `#Basispfad fuer Virtuelle Mailboxen
+    #Basispfad fuer Virtuelle Mailboxen
       virtual_mailbox_base = /var/mail/
 
 ###Dovecot
