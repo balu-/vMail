@@ -44,4 +44,10 @@ if [ ! $# = 1 ]
     chown 5000:5000 /var/mail/$domain
     chmod 700 /var/mail/$domain
   fi
+  if [ ! -x /var/mail/$domain/$user ]
+  then
+      mkdir /var/mail/$domain/$user
+      chown 5000:5000 /var/mail/$domain/$user
+      chmod 700 /var/mail/$domain/$user
+  fi
 fi
