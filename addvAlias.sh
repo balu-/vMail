@@ -31,7 +31,7 @@ if [ ! $# = 2 ]
           #insert in vdomains
           echo "Insert $domain into /etc/postfix/vdomains"
           echo $domain >> /etc/postfix/vdomains
-          postmap /etc/postfix/vdomains
+          #postmap /etc/postfix/vdomains
       fi
  
       postfix reload
