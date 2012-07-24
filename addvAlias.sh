@@ -21,7 +21,7 @@ if [ ! $# = 2 ]
 
   if [ $? -eq 1 ]
     then
-      echo "Insert $alias as Alias for $aliasto in /etc/postfix/valias"
+      echo "Insert $1 as Alias for $2 in /etc/postfix/valias"
       echo $1 $2 >> /etc/postfix/valias
       postmap /etc/postfix/valias
       #check for vdomain
