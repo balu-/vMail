@@ -34,7 +34,9 @@ if [ ! $# = 1 ]
   echo $1  $domain/$user/Maildir >> /etc/postfix/vmaps
   postmap /etc/postfix/vmaps
   postfix reload
-  
+ # Create virtual domain
+ `(dirname $0)/addvDomain.sh $domain`
+
  # Create the needed Maildir directories
   echo "Creating domain direcotry /var/mail/$domain"
   # maildirmake.dovecot does only chown on user directory, we'll create domain directory instead
