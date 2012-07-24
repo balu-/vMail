@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [ ! $# = 1 ]
  then
   echo "Usage: $0 username@domain"
@@ -37,8 +37,7 @@ if [ ! $# = 1 ]
   
  # Create the needed Maildir directories
   echo "Creating domain direcotry /var/mail/$domain"
-  # maildirmake.dovecot does only chown on user directory, we'll create domain d
-irectory instead
+  # maildirmake.dovecot does only chown on user directory, we'll create domain directory instead
   if [ ! -x /var/mail/$domain ]
    then
     mkdir /var/mail/$domain
