@@ -12,7 +12,11 @@ if [ ! $# = 2 ]
 ."
     exit 2
   fi
-
+  
+  if [ ! -f /etc/postfix/valias ]
+  then
+      touch /etc/postfix/valias
+  fi
   grep -q $1 /etc/postfix/valias
 
   if [ $? -eq 1 ]
