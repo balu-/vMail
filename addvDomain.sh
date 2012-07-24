@@ -12,6 +12,10 @@ if [ ! $# = 1 ]
     exit 2
   fi
 
+  if [ ! -f /etc/postfix/vdomains ]
+  then 
+      touch /etc/postfix/vdomains
+  fi
   grep -q $domain /etc/postfix/vdomains
   if [ $? -eq 1 ]
    then
