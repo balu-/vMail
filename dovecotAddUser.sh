@@ -1,4 +1,6 @@
 #!/bin/bash
+trap "echo Booh!; exit -1" SIGINT SIGTERM
+
 if [ ! $# = 1 ]
  then
   echo "Usage: $0 username@domain"
@@ -11,7 +13,7 @@ if [ ! $# = 1 ]
     echo "No domain given\nUsage: $0 username@domain"
     exit 2
   fi
-  echo "\nCreate a password for the new email user"
+  echo " \nCreate a password for the new email user"
   passwd=`dovecotpw -s ssha256`
   echo "Adding password for $user@$domain to /var/mail/auth.d/$domain/passwd"
 
