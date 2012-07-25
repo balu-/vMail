@@ -37,7 +37,7 @@ if [ ! $# = 1 ]
   postmap /etc/postfix/vmaps
   postfix reload
  # Create virtual domain
- `(dirname $0)/addvDomain.sh $domain`
+ `$(dirname $0)/addvDomain.sh $domain`
 
  # Create the needed Maildir directories
   echo "Creating domain direcotry /var/mail/$domain"
