@@ -1,5 +1,7 @@
 #!/bin/bash
 
+trap "echo Booh!; exit -1" SIGINT SIGTER
+
 if [ ! $# = 1 ]
  then
   echo "Usage: $0 domain"
