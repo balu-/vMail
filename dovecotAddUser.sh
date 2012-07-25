@@ -1,18 +1,18 @@
 #!/bin/bash
 trap "echo Booh!; exit -1" SIGINT SIGTERM
 
-PATH=$(dirname $0)
+MYPATH=$(dirname $0)
 # load config                                                                                                                    
-if [ -f $PATH/conf.conf ]
+if [ -f $MYPATH/conf.conf ]
 then
-    source $PATH/conf.conf
+    source $MYPATH/conf.conf
 else
     echo "No Config present"
     exit -1;
 fi
-if [ -f $PATH/conf.local ]
+if [ -f $MYPATH/conf.local ]
 then
-    source $PATH/conf.local
+    source $MYPATH/conf.local
 fi
 
 
