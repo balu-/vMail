@@ -6,6 +6,9 @@ PATH=$(dirname $0)
 if [ -f $PATH/conf.conf ]
 then
     source $PATH/conf.conf
+else
+    echo "No Config present"
+    exit -1;
 fi
 if [ -f $PATH/conf.local ]
 then
