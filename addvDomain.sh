@@ -1,6 +1,6 @@
 #!/bin/bash
 
-trap "echo Booh!; exit -1" SIGINT SIGTER
+trap "echo Booh!; exit -1" SIGINT SIGTERM
 
 MYPATH=$(dirname $0)
 # load config
