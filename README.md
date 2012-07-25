@@ -4,8 +4,12 @@ vMail
 Some simple scripts to manage my virtual Users &amp; Domains in my postfix/dovecot setup.
 
 
+
 Config
 ------
+
+main config is done in conf.conf, to change anything please copy the file to conf.local
+and change values there
 
 for this scripts to work you have to have the following config + files:
 
