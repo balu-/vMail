@@ -34,7 +34,7 @@ if [ ! $# = 2 ]
   then
       touch /etc/postfix/valias
   fi
-  grep -q $1 /etc/postfix/valias
+  grep -q "^$1" /etc/postfix/valias
 
   if [ $? -eq 1 ]
     then
@@ -42,7 +42,7 @@ if [ ! $# = 2 ]
       echo $1 $2 >> /etc/postfix/valias
       postmap /etc/postfix/valias
       #check for vdomain
-      grep -q $domain /etc/postfix/vdomains
+      grep -q "^$domain" /etc/postfix/vdomains
       if [ $? -eq 1 ]
         then
           #insert in vdomains
