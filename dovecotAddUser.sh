@@ -1,6 +1,18 @@
 #!/bin/bash
 trap "echo Booh!; exit -1" SIGINT SIGTERM
 
+PATH=$(dirname $0)
+# load config                                                                                                                    
+if [ -f $PATH/conf.conf ]
+then
+    source $PATH/conf.conf
+fi
+if [ -f $PATH/conf.local ]
+then
+    source $PATH/conf.local
+fi
+
+
 if [ ! $# = 1 ]
  then
   echo "Usage: $0 username@domain"
@@ -45,13 +57,13 @@ if [ ! $# = 1 ]
   if [ ! -x /var/mail/$domain ]
    then
     mkdir /var/mail/$domain
-    chown 5000:5000 /var/mail/$domain
+    chown $MAIL_ACCESS_UID:$MAIL_ACCESS_GID /var/mail/$domain
     chmod 700 /var/mail/$domain
   fi
   if [ ! -x /var/mail/$domain/$user ]
   then
       mkdir /var/mail/$domain/$user
-      chown 5000:5000 /var/mail/$domain/$user
+      chown $MAIL_ACCESS_UID:$MAIL_ACCESS_GID /var/mail/$domain/$user
       chmod 700 /var/mail/$domain/$user
   fi
 fi

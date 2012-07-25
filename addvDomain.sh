@@ -2,6 +2,18 @@
 
 trap "echo Booh!; exit -1" SIGINT SIGTER
 
+PATH=$(dirname $0)
+# load config
+if [ -f $PATH/conf.conf ]
+then
+    source $PATH/conf.conf
+fi
+if [ -f $PATH/conf.local ]
+then
+    source $PATH/conf.local
+fi
+
+
 if [ ! $# = 1 ]
  then
   echo "Usage: $0 domain"
