@@ -1,4 +1,6 @@
 #!/bin/bash
+trap "echo Booh!; exit -1" SIGINT SIGTERM
+
 if [ ! $# = 2 ]
  then
   echo "Usage: $0 username@domain alias@domain,alias2@domain.."
