@@ -44,4 +44,4 @@ if [ ! $# = 1 ]
   passwd=`dovecotpw -s ssha256`
   echo "Change password for $user@$domain in /var/mail/auth.d/$domain/passwd"
   sed -e "s/^$user@$domain.*$/$passwd/" /var/mail/auth.d/$domain/passwd > /var/mail/auth.d/$domain/passwd
-
+fi
