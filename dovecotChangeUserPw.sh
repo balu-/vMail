@@ -31,7 +31,7 @@ if [ ! $# = 1 ]
   if [ -f /var/mail/auth.d/$domain/passwd ]
    then 
     grep -q "$user@$domain" /var/mail/auth.d/$domain/passwd
-    if [ $? -eq 0 ]
+    if [ $? -eq 1 ]
      then
          echo "User $user@$domain does not exist"
          exit 0
