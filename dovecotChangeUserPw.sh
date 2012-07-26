@@ -41,7 +41,8 @@ if [ ! $# = 1 ]
       exit 0
   fi
   echo " \nCreate a new password for $user@$domain"
-  passwd=`dovecotpw -s ssha256`
+  passwd=`dovecotpw -s ssha256 | sed -e 's/\([[\/.*]\|\]\)/\\&/g'`
   echo "Change password for $user@$domain in /var/mail/auth.d/$domain/passwd"
-  sed -e "s/^$user@$domain.*$/$passwd/" /var/mail/auth.d/$domain/passwd > /var/mail/auth.d/$domain/passwd
+  addr=$(printf "${user}@${domain}:" | sed -e 's/\([[\/.*]\|\]\)/\\&/g') # escape regex chars
+  sed -r 's/^('$addr').*$/\1'$passwd'/' /var/mail/auth.d/$domain/passwd > /var/mail/auth.d/$domain/passwd
 fi
