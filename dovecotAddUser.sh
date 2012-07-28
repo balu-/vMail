@@ -21,8 +21,8 @@ if [ ! $# = 1 ]
   echo "Usage: $0 username@domain"
   exit 1
  else
-  user=`echo "$1" | cut -f1 -d "@"`
-  domain=`echo "$1" | cut -s -f2 -d "@"`
+  user=`echo "$1" | cut -f1 -d "@" | tr '[:upper:]' '[:lower:]'`
+  domain=`echo "$1" | cut -s -f2 -d "@" | tr '[:upper:]' '[:lower:]'`
   if [ -x $domain ]
    then
     echo "No domain given\nUsage: $0 username@domain"
