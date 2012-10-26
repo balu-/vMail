@@ -29,19 +29,25 @@ if [ ! $# = 1 ]
     exit 2
   fi
   echo " \nCreate a password for the new email user"
-  passwd=`dovecotpw -s ssha256`
+
+  if [ $(dovecot --version|cut -b1) -eq '2' ]; then
+    passwd=`doveadm pw -s ssha256`
+  else
+    passwd=`dovecotpw -s ssha256`
+  fi
+
   echo "Adding password for $user@$domain to /var/mail/auth.d/$domain/passwd"
 
   if [ ! -x /var/mail/auth.d/$domain ]
    then
     mkdir /var/mail/auth.d/$domain
-    chown doveauth:doveauth /var/mail/auth.d/$domain
+    chown $AUTHUSER.$AUTHGROUP /var/mail/auth.d/$domain
     chmod 700 /var/mail/auth.d/$domain
   fi
   if [ ! -x /var/mail/auth.d/$domain/passwd ]
    then
     touch /var/mail/auth.d/$domain/passwd
-    chown doveauth:doveauth /var/mail/auth.d/$domain/passwd
+    chown $AUTHUSER:$AUTHGROUP /var/mail/auth.d/$domain/passwd
     chmod 640 /var/mail/auth.d/$domain/passwd
   fi
   echo  "$user@$domain:$passwd" >> /var/mail/auth.d/$domain/passwd
